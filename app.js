@@ -19,11 +19,15 @@ const articleSchema = {
     title: String,
     content: String
 }
-
 const Article = mongoose.model("Article", articleSchema); //create 'articles' collection following the articleSchema 
 
-
 //APIs
+app.get("/articles", async(req,res) => {
+    const allArticles = Article.find(); //return all articles
+    allArticles.then((articles)=>{
+        console.log(articles);
+    })
+})
 
 
 app.listen(3000, function() {
